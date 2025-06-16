@@ -3,10 +3,13 @@ import ProfileClient from '@/app/components/ProfileClient';
 
 const prisma = new PrismaClient();
 
-export default async function ProfilePage(props: { params: { id: string } }) {
-  // Додаємо await на випадок, якщо params — проміс
-  const params = await props.params;
-  const userId = Number(params.id);
+export default async function ProfilePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const resolvedParams = await params;
+  const userId = Number(resolvedParams.id);
 
   const user = await prisma.user.findUnique({
     where: { id: userId },
@@ -20,5 +23,6 @@ export default async function ProfilePage(props: { params: { id: string } }) {
   });
 
   if (!user) return <div>Користувача не знайдено</div>;
+
   return <ProfileClient user={user} />;
 }

@@ -1,9 +1,9 @@
-// src/lib/auth.ts
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 
-export function getUserFromToken() {
-  const token = cookies().get('token')?.value
+export async function getUserFromToken() {
+  const cookiesList = await cookies()
+  const token = cookiesList.get('token')?.value
   if (!token) return null
 
   try {
