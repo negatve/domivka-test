@@ -1,0 +1,126 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 2px 12px #0001;
+  margin-bottom: 24px;
+  transition: box-shadow 0.2s;
+  gap: 28px;
+}
+
+.card:hover {
+  box-shadow: 0 6px 24px #0002;
+}
+
+.images {
+  min-width: 300px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2e7030;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+.author {
+  font-size: 0.98rem;
+  color: #555;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.authorEmail {
+  color: #888;
+  font-size: 0.95em;
+  margin-left: 4px;
+}
+
+.meta {
+  font-size: 0.98rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.location {
+  font-size: 0.98rem;
+  color: #388e3c;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #388e3c;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.createdAt {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  .images {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .image {
+    width: 100%;
+    height: 140px;
+  }
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Додайте до index.module.css */
+.authorPhone {
+  color: #388e3c;
+  font-size: 0.98rem;
+  margin-top: 2px;
+}

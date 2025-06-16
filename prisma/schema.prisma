@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int          @id @default(autoincrement())
+  email        String       @unique
+  username     String
+  password     String
+  balance      Float        @default(0.0)         // Кошти на рахунку
+  phone        String?                              // Номер телефону (може бути null)
+  listings     Listing[]                       // Оголошення користувача
+}
+  
+model Listing {
+  id           Int      @id @default(autoincrement())
+  type         String   // Тип: "будинок", "квартира", "кімната"
+  title        String   // Назва або заголовок
+  description  String   // Опис
+  images       ListingImage[] // Додаємо звʼязок з ListingImage
+  price        Float    // Ціна оренди або купівлі
+  location     String   // Адреса або місто
+  dealType     String   // Тип угоди: "оренда" або "купівля"
+  createdAt    DateTime @default(now())
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+
+model ListingImage {
+  id         Int      @id @default(autoincrement())
+  url        String   // Посилання на зображення
+  listing    Listing  @relation(fields: [listingId], references: [id])
+  listingId  Int
+}

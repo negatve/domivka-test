@@ -1,0 +1,33 @@
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.footerNav {
+    margin-top: 10px;
+}
+
+.footerLink {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.footerLink:hover {
+    text-decoration: underline;
+}

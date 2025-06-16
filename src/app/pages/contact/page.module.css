@@ -1,0 +1,130 @@
+.root {
+    min-height: 100vh;
+    background: #f9f5f1;
+    padding: 1.5rem;
+    color: #1f1f1f;
+}
+
+@media (min-width: 1024px) {
+    .root {
+        padding: 5rem;
+    }
+}
+
+.heading {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .contactGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.contactItem {
+    font-size: 1rem;
+}
+
+.contactIcon {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.formWrapper {
+    background: #fff;
+    padding: 0; /* padding буде у .formGrid */
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px 0 rgba(31, 31, 31, 0.08);
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2rem; /* Додаємо однаковий відступ з усіх боків */
+}
+
+@media (min-width: 768px) {
+    .formGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        padding: 2rem; /* Зберігаємо відступ і на великих екранах */
+    }
+}
+
+.formGrid,
+.input,
+.select,
+.textarea {
+    box-sizing: border-box;
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.input,
+.select,
+.textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+}
+
+.input,
+.select,
+.textarea {
+    margin: 0;
+}
+
+.textarea {
+    height: 8rem;
+    resize: vertical;
+}
+
+.fullWidth {
+    grid-column: span 2;
+}
+.buttonWrapper {
+    grid-column: span 2;
+    text-align: right;
+}
+
+.button {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #333;
+}
+
+@media (max-width: 767px) {
+    .fullWidth,
+    .buttonWrapper {
+        grid-column: span 1;
+    }
+}

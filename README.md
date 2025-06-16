@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Домівка — Веб-сайт для розміщення оголошень про житло
 
-## Getting Started
+Цей проект — це веб-додаток для розміщення, пошуку та перегляду оголошень про житло, створений на базі [Next.js](https://nextjs.org) з використанням [Prisma ORM](https://www.prisma.io/) та бази даних SQLite.
 
-First, run the development server:
+## Огляд архітектури
+
+```mermaid
+flowchart TD
+    A[Користувач] 
+    A -->|HTTP/HTTPS| B[Next.js Frontend]
+    B -->|API/Server Actions| C[Next.js Backend]
+    C -->|Prisma ORM| D[Prisma Client]
+    D -->|SQL| E[(SQLite Database)]
+
+    subgraph "Frontend (Next.js)"
+      B1[Сторінка /dashboard]
+      B2[Сторінка /dashboard/[id]]
+      B3[Компонент ListingSearch]
+      B4[Компонент ListingCard]
+      B5[Компонент ProfileClient]
+      B1 --> B3
+      B3 --> B4
+      B2 --> B5
+    end
+
+    subgraph "Backend (Next.js API/Server Actions)"
+      C1[API: Отримання користувача]
+      C2[API: Отримання оголошень]
+      C3[API: Додавання оголошення]
+      C4[API: Авторизація/реєстрація]
+      C1 --> D
+      C2 --> D
+      C3 --> D
+      C4 --> D
+    end
+
+    A --> B1
+    A --> B2
+    B1 --> C2
+    B2 --> C1
+    B2 --> C2
+    B2 --> C3
+    B --> C4
+
+    D --> E
+```
+
+## Як запустити проект
+
+### 1. Встановлення залежностей
+
+На новому комп'ютері виконайте:
+
+```bash
+npm install
+# або
+yarn install
+# або
+pnpm install
+```
+
+### 2. Налаштування бази даних та Prisma
+
+- Відредагуйте файл `.env` за потреби (наприклад, для зміни шляху до бази даних).
+- Ініціалізуйте базу даних та Prisma:
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+### 3. Запуск проекту
 
 ```bash
 npm run dev
-# or
+# або
 yarn dev
-# or
+# або
 pnpm dev
-# or
+# або
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Відкрийте [http://localhost:3000](http://localhost:3000) у браузері.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Основні сторінки та компоненти
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/dashboard` — головна сторінка оголошень
+- `/dashboard/[id]` — детальна сторінка оголошення
+- `ListingSearch`, `ListingCard`, `ProfileClient` — основні компоненти інтерфейсу
 
-## Learn More
+## Додатково
 
-To learn more about Next.js, take a look at the following resources:
+- Для роботи з базою даних використовується Prisma ORM та SQLite.
+- Для розгортання можна використовувати [Vercel](https://vercel.com/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Корисні посилання
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Документація Next.js](https://nextjs.org/docs)
+- [Документація Prisma](https://www.prisma.io/docs)
+- [Документація Vercel](https://vercel.com/docs)

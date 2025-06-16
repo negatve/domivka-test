@@ -1,8 +1,4 @@
-// app/page.tsx
-'use client'
-
-import { useRouter } from 'next/navigation'
-import styles from './page.module.css'
+// app/dashboard/page.tsx
 
 export default function HomePage() {
   return (
